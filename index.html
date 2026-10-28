@@ -1,0 +1,175 @@
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, Arial, sans-serif;
+  min-height: 100vh;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+  background: #0c111b;
+}
+
+.logo {
+  width: 44px;
+  height: 44px;
+  border-radius: 13px;
+  display: grid;
+  place-items: center;
+  background: #143b2b;
+  color: var(--green);
+  font-size: 24px;
+}
+
+h1 { font-size: 18px; margin: 0; }
+header p { margin: 4px 0 0; color: var(--muted); font-size: 12px; }
+
+.status {
+  margin-right: auto;
+  color: var(--green);
+  font-size: 12px;
+}
+
+main {
+  max-width: 900px;
+  margin: auto;
+  padding: 22px 16px;
+}
+
+.welcome {
+  padding: 22px;
+  border: 1px solid var(--border);
+  background: linear-gradient(135deg, #111c29, #10151f);
+  border-radius: 18px;
+  margin-bottom: 18px;
+}
+
+.welcome h2 { margin-top: 0; font-size: 23px; }
+.welcome p { color: var(--muted); line-height: 1.8; }
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.chip {
+  background: #172333;
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 20px;
+  padding: 9px 12px;
+  cursor: pointer;
+}
+
+.chat {
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 16px 0 24px;
+}
+
+.message {
+  max-width: 90%;
+  padding: 13px 16px;
+  border-radius: 15px;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+.bot {
+  align-self: flex-start;
+  background: var(--panel);
+  border: 1px solid var(--border);
+}
+
+.user {
+  align-self: flex-end;
+  background: #123c2b;
+  border: 1px solid #24694b;
+}
+
+.composer {
+  position: sticky;
+  bottom: 0;
+  background: var(--bg);
+  padding: 12px 0 18px;
+}
+
+.input-wrap {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+
+textarea {
+  flex: 1;
+  min-width: 0;
+  resize: vertical;
+  min-height: 48px;
+  max-height: 180px;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  color: var(--text);
+  font: inherit;
+  padding: 10px;
+}
+
+button.send {
+  align-self: flex-end;
+  border: 0;
+  border-radius: 12px;
+  padding: 12px 17px;
+  color: #06150d;
+  background: var(--green);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:disabled { opacity: .5; cursor: not-allowed; }
+
+.note {
+  color: var(--muted);
+  font-size: 12px;
+  text-align: center;
+  line-height: 1.8;
+}
+
+@media (max-width: 500px) {
+  header { padding: 13px; }
+  .status { font-size: 10px; }
+  .welcome h2 { font-size: 20px; }
+  .message { max-width: 96%; }
+}
+<section class="chat" id="chat" aria-live="polite">
+  <div class="message bot">
+    أهلًا! أنا واجهة مساعدك التعليمي. اكتب سؤالك للبدء.
+    ملاحظة: هذه النسخة لا تتصل بعد بنموذج ذكاء اصطناعي.
+  </div>
+</section>
+
+<section class="composer">
+  <form id="form" class="input-wrap">
+    <textarea id="prompt" maxlength="4000"
+      placeholder="اكتب سؤالك هنا..." required></textarea>
+    <button class="send" id="send" type="submit">إرسال ↑</button>
+  </form>
+  <p class="note">
+    نسخة واجهة تجريبية تعمل على GitHub Pages.
+    لا تدخل كلمات مرور أو مفاتيح سرية.
+  </p>
+</section>
